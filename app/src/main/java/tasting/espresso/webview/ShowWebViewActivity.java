@@ -1,5 +1,6 @@
 package tasting.espresso.webview;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
@@ -10,6 +11,7 @@ public class ShowWebViewActivity extends AppCompatActivity {
 
     private static final String HTML_PATH = "file:///android_asset/login_test.html";
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

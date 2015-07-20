@@ -20,6 +20,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.web.assertion.WebViewAssertions.webContent;
 import static android.support.test.espresso.web.matcher.DomMatchers.hasElementWithId;
 import static android.support.test.espresso.web.sugar.Web.onWebView;
+import static android.support.test.espresso.web.webdriver.DriverAtoms.findElement;
+import static android.support.test.espresso.web.webdriver.DriverAtoms.webKeys;
 
 /**
  * Unit test for {@link ShowWebViewActivity}.
@@ -45,11 +47,11 @@ public class ShowWebViewActivityTest {
 
     @Test
     public void enter_email_and_password_submit() {
-        onWebView().withElement(DriverAtoms.findElement(Locator.ID, "email_input"))
-                .perform(DriverAtoms.webKeys(EMAIL_TO_BE_TYPED));
-        onWebView().withElement(DriverAtoms.findElement(Locator.ID, "password_input"))
-                .perform(DriverAtoms.webKeys(PASSWORD_TO_BE_TYPED));
-        onWebView().withElement(DriverAtoms.findElement(Locator.ID, "submit_button"))
+        onWebView().withElement(findElement(Locator.ID, "email_input"))
+                .perform(webKeys(EMAIL_TO_BE_TYPED));
+        onWebView().withElement(findElement(Locator.ID, "password_input"))
+                .perform(webKeys(PASSWORD_TO_BE_TYPED));
+        onWebView().withElement(findElement(Locator.ID, "submit_button"))
                 .perform(DriverAtoms.webClick());
         // This view is in a different Activity, no need to tell Espresso.
         onView(withId(R.id.email)).check(matches(withText(EMAIL_TO_BE_TYPED)));
