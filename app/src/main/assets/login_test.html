@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+
+<p>email</p>
+<input type="email" id="email_input"><br>
+
+<p>password</p>
+<input type="password" id="password_input"><br>
+
+<button type="submit" id="submit_button">submit</button>
+<script type="text/javascript">
+    document.getElementById("submit_button").addEventListener("click", function(){
+        var email = document.getElementById("email_input").value;
+        var password = document.getElementById("password_input").value;
+        var url = "scheme://scheme?email=" + email + "&password=" + password;
+        window.open(url);
+    });
+</script>
+</body>
+
+</html>
