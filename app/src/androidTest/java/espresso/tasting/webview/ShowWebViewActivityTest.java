@@ -30,9 +30,9 @@ import static android.support.test.espresso.web.webdriver.DriverAtoms.webKeys;
 @LargeTest
 public class ShowWebViewActivityTest {
 
-    private static final String EMAIL_TO_BE_TYPED = "email_to_be_entered";
+    private static final String EMAIL_TO_BE_TYPED = "email_to_be_typed";
 
-    private static final String PASSWORD_TO_BE_TYPED = "password_to_be_entered";
+    private static final String PASSWORD_TO_BE_TYPED = "password_to_be_typed";
 
     @Rule
     public ActivityTestRule<ShowWebViewActivity> activityRule = new ActivityTestRule<>(
@@ -47,6 +47,8 @@ public class ShowWebViewActivityTest {
 
     @Test
     public void enter_email_and_password_submit() {
+        onWebView().withElement(findElement(Locator.ID, "email_input"))
+                .perform(webKeys(EMAIL_TO_BE_TYPED));
         onWebView().withElement(findElement(Locator.ID, "email_input"))
                 .perform(webKeys(EMAIL_TO_BE_TYPED));
         onWebView().withElement(findElement(Locator.ID, "password_input"))
