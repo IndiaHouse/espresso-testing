@@ -1,6 +1,5 @@
 package espresso.tasting.webview;
 
-import android.support.test.espresso.web.webdriver.DriverAtoms;
 import android.support.test.espresso.web.webdriver.Locator;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -21,6 +20,7 @@ import static android.support.test.espresso.web.assertion.WebViewAssertions.webC
 import static android.support.test.espresso.web.matcher.DomMatchers.hasElementWithId;
 import static android.support.test.espresso.web.sugar.Web.onWebView;
 import static android.support.test.espresso.web.webdriver.DriverAtoms.findElement;
+import static android.support.test.espresso.web.webdriver.DriverAtoms.webClick;
 import static android.support.test.espresso.web.webdriver.DriverAtoms.webKeys;
 
 /**
@@ -52,7 +52,7 @@ public class ShowWebViewActivityTest {
         onWebView().withElement(findElement(Locator.ID, "password_input"))
                 .perform(webKeys(PASSWORD_TO_BE_TYPED));
         onWebView().withElement(findElement(Locator.ID, "submit_button"))
-                .perform(DriverAtoms.webClick());
+                .perform(webClick());
         // This view is in a different Activity, no need to tell Espresso.
         onView(withId(R.id.email)).check(matches(withText(EMAIL_TO_BE_TYPED)));
         onView(withId(R.id.password)).check(matches(withText(PASSWORD_TO_BE_TYPED)));
